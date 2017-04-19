@@ -1,0 +1,13 @@
+@relation EXAMPLE
+@attribute Name string
+@attribute drawnFaceCount numeric
+@attribute realFaceCount numeric
+@attribute contrast numeric
+@attribute homogeneity numeric
+@attribute brightColorCount numeric
+@attribute darkColorCount numeric
+@attribute  dissimilarity numeric
+@attribute energy numeric
+@attribute imgType {real,cartoon}
+@data
+"asdasd",0,0,234,5,5,5,6,5,real
