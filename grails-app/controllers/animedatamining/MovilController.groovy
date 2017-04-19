@@ -17,7 +17,7 @@ class MovilController {
 
     def dirPath() {
         //ejmplo tiene que ser la ruta completa
-        String testImg = "/home/mrmomo/gitStuff/dataMiningStuff/AnimeDataMining/Screenshot from 2017-01-16 18-17-25.png"
+        String testImg = "image.jpg"
         //ruta completa a donde esta la capeta final que tiene lo necesario
         String finalDir = servletContext.getRealPath("/modelarffmineriadedatos")
         Boolean imageType = ClassifyImageService.isCartoon(finalDir,testImg)
@@ -35,6 +35,19 @@ class MovilController {
         RetornoImagen retorno = new RetornoImagen()
         try {
             retorno = imagenService.procesarImagen(imagen)
+
+            String testImg = "image.jpg"
+            //ruta completa a donde esta la capeta final que tiene lo necesario
+            String finalDir = servletContext.getRealPath("/modelarffmineriadedatos")
+            Boolean imageType = ClassifyImageService.isCartoon(finalDir,testImg)
+            if (imageType == null) {
+               retorno.resultado  = "No Reconozido"
+            } else if (imageType) {
+                retorno.resultado  = "Imagen Caricatura"
+            } else {
+                retorno.resultado  = "Imagen Real"
+            }
+
         } catch (MiExcepcion ex) {
             ex.printStackTrace()
             retorno = new RetornoImagen()

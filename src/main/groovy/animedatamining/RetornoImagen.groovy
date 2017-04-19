@@ -5,9 +5,6 @@ package animedatamining
 
 class RetornoImagen {
     String resultado
-
-
-
     //Siempre retorno
     boolean error = false;
     String mensaje;

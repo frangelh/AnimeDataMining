@@ -16,10 +16,8 @@ class ImagenService {
         }
 
         try {
-
             BufferedImage image = null;
             byte[] imageByte;
-
             BASE64Decoder decoder = new BASE64Decoder();
             imageByte = decoder.decodeBuffer(imagen);
             ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
@@ -29,7 +27,6 @@ class ImagenService {
             // write the image to a file
             File outputfile = new File("image.jpg");
             ImageIO.write(image, "jpg", outputfile);
-            retorno.resultado = "OK"
             retorno.mensaje = "Procesado Correctamente"
 
             return retorno
