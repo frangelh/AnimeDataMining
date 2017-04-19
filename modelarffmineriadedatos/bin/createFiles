@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-find ../real/ -name *.jpg > ./real.dat
-find ../anime/ -name *.jpg > ./anim.dat
