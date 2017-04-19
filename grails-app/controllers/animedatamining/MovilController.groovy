@@ -31,7 +31,7 @@ class MovilController {
     }
 
     def procesarImagen(String imagen) {
-        println "SUPERLOG:" + imagen
+        println "SUPERLOG:" + imagen.length()
         RetornoImagen retorno = new RetornoImagen()
         try {
             retorno = imagenService.procesarImagen(imagen)
