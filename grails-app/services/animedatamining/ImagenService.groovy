@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage
 @Transactional
 class ImagenService {
 
+    def servletContext
     RetornoImagen procesarImagen(String imagen){
         RetornoImagen retorno = new RetornoImagen()
         if(imagen==null){
@@ -25,7 +26,8 @@ class ImagenService {
             bis.close()
 
             // write the image to a file
-            String filename = "image.jpg"
+            String filename = servletContext.getRealPath("image.jpg")
+            println "imagen Recibida:"+filename
             File outputfile = new File(filename)
             ImageIO.write(image, "jpg", outputfile)
             retorno.mensaje = "Procesado Correctamente"

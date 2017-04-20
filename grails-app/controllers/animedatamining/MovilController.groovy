@@ -46,11 +46,12 @@ class MovilController {
             retorno = imagenService.procesarImagen(imagen)
 
             String testImg = servletContext.getRealPath("image.jpg")
+            println testImg
             //ruta completa a donde esta la capeta final que tiene lo necesario
             String finalDir = servletContext.getRealPath("/modelarffmineriadedatos")
             Boolean imageType = ClassifyImageService.isCartoon(finalDir, testImg)
             if (imageType == null) {
-                retorno.resultado = "No Reconozido"
+                retorno.resultado = "No Reconocido"
             } else if (imageType) {
                 retorno.resultado = "Imagen Caricatura"
             } else {
