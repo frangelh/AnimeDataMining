@@ -25,7 +25,7 @@ class ImagenService {
             bis.close()
 
             // write the image to a file
-            String filename = servletContext.getRealPath("image.jpg")
+            String filename = "image.jpg"
             File outputfile = new File(filename)
             ImageIO.write(image, "jpg", outputfile)
             retorno.mensaje = "Procesado Correctamente"
