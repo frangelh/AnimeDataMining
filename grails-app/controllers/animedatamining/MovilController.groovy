@@ -15,12 +15,20 @@ class MovilController {
         render "Bienvenidos al API REST"
     }
 
-    def dirPath() {
+    def testRest() {
+        boolean isToon = params.boolean("toon")
+        String testImg;
         //ejmplo tiene que ser la ruta completa
-        String testImg = "image.jpg"
+        //esto es para elegir cual probar
+        if (isToon) {
+            testImg =servletContext.getRealPath("toon.jpg")
+        } else {
+            testImg =servletContext.getRealPath("real.jpg")
+
+        }
         //ruta completa a donde esta la capeta final que tiene lo necesario
         String finalDir = servletContext.getRealPath("/modelarffmineriadedatos")
-        Boolean imageType = ClassifyImageService.isCartoon(finalDir,testImg)
+        Boolean imageType = ClassifyImageService.isCartoon(finalDir, testImg)
         if (imageType == null) {
             render "no image"
         } else if (imageType) {
@@ -37,16 +45,16 @@ class MovilController {
         try {
             retorno = imagenService.procesarImagen(imagen)
 
-            String testImg = "image.jpg"
+            String testImg = servletContext.getRealPath("image.jpg")
             //ruta completa a donde esta la capeta final que tiene lo necesario
             String finalDir = servletContext.getRealPath("/modelarffmineriadedatos")
-            Boolean imageType = ClassifyImageService.isCartoon(finalDir,testImg)
+            Boolean imageType = ClassifyImageService.isCartoon(finalDir, testImg)
             if (imageType == null) {
-               retorno.resultado  = "No Reconozido"
+                retorno.resultado = "No Reconozido"
             } else if (imageType) {
-                retorno.resultado  = "Imagen Caricatura"
+                retorno.resultado = "Imagen Caricatura"
             } else {
-                retorno.resultado  = "Imagen Real"
+                retorno.resultado = "Imagen Real"
             }
 
         } catch (MiExcepcion ex) {

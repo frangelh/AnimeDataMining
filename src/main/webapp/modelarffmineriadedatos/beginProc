@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+singlefile=$1
+cd "$(dirname "$0")"/bin
+if [[ $singlefile != "" ]] ;then
+    ./creatArff -f $singlefile && groovy -cp weka.jar classify.groovy
+    rm entrada.arff 2> /dev/null
+else 
+    ./createFiles
+    ./creatArff ./anim.dat ./real.dat
+    mv output.arff ../
+fi
+cd ../

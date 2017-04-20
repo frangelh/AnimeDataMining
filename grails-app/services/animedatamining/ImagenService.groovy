@@ -16,17 +16,18 @@ class ImagenService {
         }
 
         try {
-            BufferedImage image = null;
-            byte[] imageByte;
-            BASE64Decoder decoder = new BASE64Decoder();
-            imageByte = decoder.decodeBuffer(imagen);
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-            image = ImageIO.read(bis);
-            bis.close();
+            BufferedImage image = null
+            byte[] imageByte
+            BASE64Decoder decoder = new BASE64Decoder()
+            imageByte = decoder.decodeBuffer(imagen)
+            ByteArrayInputStream bis = new ByteArrayInputStream(imageByte)
+            image = ImageIO.read(bis)
+            bis.close()
 
             // write the image to a file
-            File outputfile = new File("image.jpg");
-            ImageIO.write(image, "jpg", outputfile);
+            String filename = servletContext.getRealPath("image.jpg")
+            File outputfile = new File(filename)
+            ImageIO.write(image, "jpg", outputfile)
             retorno.mensaje = "Procesado Correctamente"
 
             return retorno
